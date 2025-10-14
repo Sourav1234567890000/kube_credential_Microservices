@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: kube-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kube-frontend
+  template:
+    metadata:
+      labels:
+        app: kube-frontend
+    spec:
+      containers:
+        - name: frontend-container
+          image: kube-credentialsdocker-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            # Point frontend to backend services using internal service names
+            - name: ISSUANCE_API_URL
+              value: "http://issuance-service:5001"
+            - name: VERIFICATION_API_URL
+              value: "http://verification-service:3001"
+
+
+# Explanation:
+
+# The frontend will communicate with backend services using their internal ClusterIP names.
+
+# You can scale frontend pods independently.              

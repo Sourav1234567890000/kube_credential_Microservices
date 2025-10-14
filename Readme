@@ -1,0 +1,123 @@
+                            ************************
+                            Kube Credential Project*
+                            *************************
+
+
+ Name : Sourav singh negi
+ Email : souravnegi144@gmail.com
+ contact : 8923886306
+ 
+                            
+
+******************Overview***********
+
+A microservice-based credential issuance and verification system with a frontend UI.
+
+    Backend: Issuance & Verification services (Node.js/TypeScript)
+
+    Frontend: React.js (VitesApp, Typescript)
+
+    Communication: REST APIs between services
+
+    Deployment: Docker and Kubernetes (Kind cluster)
+
+            ********Folder Structure*********
+
+                kube-credentials/
+                ├── backend/
+                │├── issuance-service/
+                │└── verification-service/
+                ├── frontend/
+                ├── docker-compose.yml
+                ├── README.md
+                └── folderStructure.txt
+
+
+                ******Technology Stack*********
+
+                • Backend: Node.js, TypeScript
+                • Frontend: React.js, TypeScript
+                • Database: JSON �les (for persistence)
+                • Containerization: Docker
+                Orchestration: Kubernetes (Kind cluster)
+
+Prerequisites
+
+()   **********************Docker********************
+
+Kind (Kubernetes in Docker)
+
+kubectl
+
+Local Docker Deployment
+
+1 . Build Docker images
+
+docker build -t kube-credentialsdocker-issuance-service ./backend/issuance-service
+docker build -t kube-credentialsdocker-verification-service ./backend/verification-service
+docker build -t kube-credentialsdocker-frontend ./frontend
+
+2 .Run services with Docker
+
+docker run -d -p 5001:5001 kube-credentialsdocker-issuance-service
+docker run -d -p 3001:3001 kube-credentialsdocker-verification-service
+docker run -d -p 5173:80 kube-credentialsdocker-frontend
+
+3. Access frontend at:
+
+http://localhost:5173
+
+locally acces 
+backend - 
+issuance - PORT - 3001
+verification - PORT - 5001
+
+() *****************Kubernetes Deployment (Kind)*************
+
+1. Create Kind cluster:
+
+kind create cluster --name kube-credentials
+kubectl create namespace kube-credentials
+
+2. Load Docker images into Kind:
+
+kind load docker-image kube-credentialsdocker-issuance-service
+kind load docker-image kube-credentialsdocker-verification-service
+kind load docker-image kube-credentialsdocker-frontend
+
+3. Apply Kubernetes manifests:
+
+kubectl apply -f backend/issuance-service/issuance-deployment.yaml -n kube-credentials
+kubectl apply -f backend/issuance-service/issuance-service.yaml -n kube-credentials
+
+kubectl apply -f backend/verification-service/verification-deployment.yaml -n kube-credentials
+kubectl apply -f backend/verification-service/verification-service.yaml -n kube-credentials
+
+kubectl apply -f frontend/frontend-deployment.yaml -n kube-credentials
+kubectl apply -f frontend/frontend-service.yaml -n kube-credentials
+
+4. Check pod status:
+
+kubectl get pods -n kube-credentials -w
+
+5. Access frontend via NodePort:
+
+http://<Kind-control-plane-IP>:30080
+
+http://172.20.0.2:30080
+
+********************
+
+NOTES
+
+Verification service depends on Issuance service internally.
+Fully tested locally on Docker + Kind.
+Testing & Cloud deployment (AWS EKS) is not included in this version.
+
+******************************SCREENSHOT***************f
+
+![alt text](<Screenshot from 2025-10-13 15-39-24-1.png>)
+![alt text](<Screenshot from 2025-10-13 15-39-34.png>)
+![alt text](<Screenshot from 2025-10-13 15-40-06.png>)
+![alt text](<Screenshot from 2025-10-13 15-40-45.png>)
+![alt text](<Screenshot from 2025-10-13 15-41-41.png>)

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: issuance-deployment
+  labels:
+    app: issuance
+spec:
+  replicas: 2  # Number of pods
+  selector:
+    matchLabels:
+      app: issuance
+  template:
+    metadata:
+      labels:
+        app: issuance
+    spec:
+      containers:
+        - name: issuance-container
+          image: kube-credentialsdocker-issuance-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5001
+          # Optional: environment variables if needed
+          env:
+            - name: NODE_ENV
+              value: "production"
+
+
+
+# Explanation:
+
+# replicas: 2 → You can scale horizontally; two pods will run.
+
+# containerPort: 5001 → matches your Docker container port.
+
+# image → must match the image you built locally.

@@ -1,0 +1,66 @@
+question may ask
+
+Perfect! Here’s a quick cheat sheet of what to expect next after submitting a Kubernetes + Docker full-stack assignment like yours:
+
+1. Code Walkthrough / Technical Questions
+
+They may ask you to explain your project step by step:
+
+Architecture: How the frontend, issuance service, and verification service communicate.
+
+Docker: Why you dockerized each service, Dockerfile details, and how images are built.
+
+Kubernetes: Deployment manifests, namespaces, services (ClusterIP vs NodePort), and why Kubernetes is used instead of just Docker Compose.
+
+Inter-service dependencies: How verification depends on issuance, any error handling.
+
+Environment variables / configs: How you manage configuration between environments.
+
+2. Problem-solving / Bug Fixing
+
+Expect small “what if” questions like:
+
+“If a pod crashes, how would you debug it?”
+
+“How to scale the service if there are 1000 requests per second?”
+
+“What if your frontend cannot reach the backend?”
+
+3. Testing / Code Quality
+
+Even though you didn’t submit tests, they may ask:
+
+“How would you write unit or integration tests for your services?”
+
+“How would you test Kubernetes deployments locally?”
+
+4. Deployment / CI-CD
+
+They may ask:
+
+“How would you deploy this to the cloud (AWS / GCP / Azure)?”
+
+“What would change if you moved from local Kubernetes (kind/minikube) to cloud-managed K8s?”
+
+5. Practical Questions
+
+“Why use Kubernetes if Docker Compose works?”
+
+“What challenges did you face deploying this project?”
+
+“How does your project handle failures?”
+
+6. Quick Tips for the Discussion
+
+Be confident but concise—explain key points clearly.
+
+Use real examples from your project: e.g., show how you tested pods running locally.
+
+Be ready to demonstrate the project live if asked—they might want to see it running.
+
+💡 Summary: You did the hard part: submission is complete with Docker + K8s, fully running. Now it’s all about confidently walking them through your design and decisions.
+
+If you want, I can write a one-page “talking points” guide for you to use during a discussion or interview, so you don’t miss anything. It will be ready to copy-paste and review in 5 minutes.
+
+
+

@@ -1,0 +1,80 @@
+.
+├── 1 Check Docker service.md
+├── backend
+│   ├── issuance-service
+│   │   ├── Dockerfile
+│   │   ├── issuance-deployment.yaml
+│   │   ├── issuance-service.yaml
+│   │   ├── nodemon.json
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── readme
+│   │   ├── src
+│   │   │   ├── controller
+│   │   │   │   ├── credentialController.ts
+│   │   │   │   └── error.ts
+│   │   │   ├── data
+│   │   │   │   └── issuanceCredentials.json
+│   │   │   ├── index.ts
+│   │   │   ├── models
+│   │   │   │   └── userCredential.ts
+│   │   │   ├── routes
+│   │   │   │   └── credentialRoutes.ts
+│   │   │   └── utils
+│   │   │       └── pathUtils.ts
+│   │   └── tsconfig.json
+│   └── verification-service
+│       ├── Dockerfile
+│       ├── nodemon.json
+│       ├── package.json
+│       ├── package-lock.json
+│       ├── src
+│       │   ├── controller
+│       │   │   └── credentialController.ts
+│       │   ├── index.ts
+│       │   ├── models
+│       │   │   └── userCredential.ts
+│       │   └── routes
+│       │       └── credentialRoutes.ts
+│       ├── tsconfig.json
+│       ├── verification-deployment.yaml
+│       └── verification-service.yaml
+├── docker-compose.yml
+├── folderStructure.txt
+└── frontend
+    ├── default.conf
+    ├── Dockerfile
+    ├── eslint.config.js
+    ├── frontend-deployment.yaml
+    ├── frontend-service.yaml
+    ├── index.html
+    ├── package.json
+    ├── package-lock.json
+    ├── public
+    │   └── vite.svg
+    ├── README.md
+    ├── src
+    │   ├── App.css
+    │   ├── App.tsx
+    │   ├── assets
+    │   │   └── react.svg
+    │   ├── components
+    │   │   ├── DataVerified.module.css
+    │   │   ├── DataVerified.tsx
+    │   │   ├── IssuanceForm.module.css
+    │   │   ├── IssuanceForm.tsx
+    │   │   ├── VerificationForm.module.css
+    │   │   └── VerificationForm.tsx
+    │   └── main.tsx
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
+
+19 directories, 53 files
+
+
+
+
+
+

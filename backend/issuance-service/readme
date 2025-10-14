@@ -1,0 +1,59 @@
+User (Frontend)
+   │
+   │ 1️⃣ Enters details in Issuance Form (Name, Email, EmployeeID)
+   │
+   ▼
+Issuance Page (React)
+   │
+   │ 2️⃣ Sends POST request to Issuance API
+   │    POST /api/submit-details
+   │
+   ▼
+Issuance API (Express + TS)
+   │
+   │ 3️⃣ Controller receives request
+   │
+   │ 4️⃣ Checks in issuanceCredentials.json
+   │      └─ If duplicate (employeeID OR email) → return error
+   │      └─ Else → create new credential object
+   │
+   │ 5️⃣ Saves credential to JSON file (data/issuanceCredentials.json)
+   │
+   │ 6️⃣ Returns response to frontend
+   │      └─ success: true / false
+   │      └─ message: "Credential issued successfully" or "Duplicate found"
+   │      └─ worker: "worker-1"
+   │
+   ▼
+Frontend (React)
+   │
+   │ 7️⃣ Shows success or error message to user
+   │
+   └─────────────────────────────┐
+                                 │
+User (Verification Form)         │
+   │                             │
+   │ 8️⃣ Enters credential to verify (employeeID or Email)
+   │
+   ▼
+Verification Page (React)
+   │
+   │ 9️⃣ Sends POST request to Verification API
+   │    POST /api/verify
+   │
+   ▼
+Verification API (Express + TS)
+   │
+   │ 10️⃣ Controller reads issuanceCredentials.json
+   │
+   │ 11️⃣ Checks if credential exists
+   │      └─ If exists → return success + worker + timestamp + credential
+   │      └─ If not → return failure + worker + timestamp
+   │
+   ▼
+Frontend (React)
+   │
+   │ 12️⃣ Displays verification result to user
+   │       └─ Valid or Invalid
+   │       └─ Worker ID
+   │       └─ Timestamp

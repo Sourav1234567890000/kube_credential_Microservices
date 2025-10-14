@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: issuance-service
+spec:
+  type: ClusterIP
+  selector:
+    app: issuance
+  ports:
+    - protocol: TCP
+      port: 5001       # internal cluster port
+      targetPort: 5001 # container port
+
+
+
+# Explanation:
+
+# ClusterIP → exposes the service internally in the cluster.
+
+# port → the port other services use to access it.
+
+# targetPort → the port your container listens on.

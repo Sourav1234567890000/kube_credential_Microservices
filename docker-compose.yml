@@ -1,0 +1,33 @@
+services:
+  issuance-service:
+    build: ./backend/issuance-service
+    container_name: issuance-service
+    ports:
+      - "5001:5001"
+    networks:
+      - kube-network
+
+  verification-service:
+    build: ./backend/verification-service
+    container_name: verification-service
+    ports:
+      - "3001:3001"
+    networks:
+      - kube-network  
+    depends_on:
+      - issuance-service
+
+  frontend:
+    build: ./frontend
+    container_name: kube-frontend
+    ports:
+      - "5173:80"       # Map host 5173 -> container port 80
+    networks:
+      - kube-network
+    depends_on:
+      - issuance-service
+      - verification-service
+
+networks:
+  kube-network:
+    driver: bridge
